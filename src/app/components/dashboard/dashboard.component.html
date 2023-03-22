@@ -1,0 +1,54 @@
+<nz-spin [nzSpinning]="isLoading" nzTip="Please wait...">
+  <div
+    style="background: #ececec; padding: 10px"
+    *ngIf="
+      lastUpdatedProduct.asin ||
+      lastDeletedProduct.asin ||
+      lastOrderedProduct.asin ||
+      lastCreatedProduct.asin ||
+      products
+    "
+  >
+    <div nz-row [nzGutter]="12">
+      <div nz-col [nzSpan]="6">
+        <nz-card [nzTitle]="'Total Products'">
+          <p><strong>Number of Products: </strong>{{ products.length }}</p>
+          <p>
+            <a routerLink="/products">See all Products...</a>
+          </p>
+          <p>
+            <a routerLink="/orders">Go to Order Products...</a>
+          </p>
+        </nz-card>
+      </div>
+      <div nz-col [nzSpan]="6" *ngIf="lastCreatedProduct.asin">
+        <nz-card [nzTitle]="'Last Created Product'">
+          <p><strong>ASIN: </strong>{{ lastCreatedProduct.asin }}</p>
+          <p><strong>Name: </strong>{{ lastCreatedProduct.name }}</p>
+          <p><strong>Price: </strong>{{ lastCreatedProduct.price }}</p>
+        </nz-card>
+      </div>
+      <div nz-col [nzSpan]="6" *ngIf="lastUpdatedProduct.asin">
+        <nz-card [nzTitle]="'Last Updated Product'">
+          <p><strong>ASIN: </strong>{{ lastUpdatedProduct.asin }}</p>
+          <p><strong>Name: </strong>{{ lastUpdatedProduct.name }}</p>
+          <p><strong>Price: </strong>{{ lastUpdatedProduct.price }}</p>
+        </nz-card>
+      </div>
+      <div nz-col [nzSpan]="6" *ngIf="lastDeletedProduct.asin">
+        <nz-card [nzTitle]="'Last Deleted Product'">
+          <p><strong>ASIN: </strong>{{ lastDeletedProduct.asin }}</p>
+          <p><strong>Name: </strong>{{ lastDeletedProduct.name }}</p>
+          <p><strong>Price: </strong>{{ lastDeletedProduct.price }}</p>
+        </nz-card>
+      </div>
+      <div nz-col [nzSpan]="6" *ngIf="lastOrderedProduct.asin">
+        <nz-card [nzTitle]="'Last Ordered Product'">
+          <p><strong>ASIN: </strong>{{ lastOrderedProduct.asin }}</p>
+          <p><strong>Name: </strong>{{ lastOrderedProduct.name }}</p>
+          <p><strong>Price: </strong>{{ lastOrderedProduct.price }}</p>
+        </nz-card>
+      </div>
+    </div>
+  </div>
+</nz-spin>

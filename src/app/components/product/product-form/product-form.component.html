@@ -1,0 +1,53 @@
+<form nz-form>
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="asin">ASIN</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input
+        nz-input
+        name="productId"
+        type="text"
+        id="asin"
+        [(ngModel)]="product.asin"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="name">Product Name</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input
+        nz-input
+        name="name"
+        type="text"
+        id="name"
+        [(ngModel)]="product.name"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label [nzSpan]="6" nzFor="price">Price</nz-form-label>
+    <nz-form-control [nzSpan]="14">
+      <input
+        nz-input
+        name="price"
+        type="text"
+        id="price"
+        [(ngModel)]="product.price"
+      />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item nz-row class="register-area">
+    <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button
+        [nzLoading]="isSaving"
+        nz-button
+        nzType="primary"
+        (click)="saveProduct()"
+      >
+        Save
+      </button>
+    </nz-form-control>
+  </nz-form-item>
+</form>

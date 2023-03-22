@@ -1,0 +1,21 @@
+<div class="user-list">
+  <h2>Users:</h2>
+  <ul>
+    <li *ngFor="let user of userList">
+      <div class="user">
+        <span>{{ user }}</span>
+        <span class="remove-user" (click)="removeUser(user)">X</span>
+      </div>
+    </li>
+  </ul>
+  <form class="add-user-form" (ngSubmit)="addUser()">
+    <input
+      class="add-user-input"
+      type="text"
+      [(ngModel)]="newUser"
+      name="user"
+      placeholder="Enter a new user..."
+    />
+    <button class="add-user-btn" type="submit" [disabled]="!newUser">Add User</button>
+  </form>
+</div>

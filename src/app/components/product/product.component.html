@@ -1,0 +1,51 @@
+<div class="add-product">
+  <button
+    nz-button
+    nzType="primary"
+    nzSize="large"
+    nzShape="round"
+    [nzLoading]="isLoading"
+    (click)="onEditProduct(product, false)"
+  >
+    <span nz-icon nzType="plus" nzTheme="outline"></span>
+    Add New Product
+  </button>
+</div>
+
+<nz-table
+  #productTable
+  [nzData]="products"
+  [nzLoading]="isLoading"
+  [nzFrontPagination]="false"
+  [nzShowPagination]="false"
+  nzTip="Please wait..."
+>
+  <thead>
+    <tr>
+      <th>S.N.</th>
+      <th>ASIN</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productTable.data; index as i">
+      <td>{{ i + 1 }}</td>
+      <td>{{ product.asin }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>
+        <a (click)="onEditProduct(product, true)">Edit</a>
+        <nz-divider nzType="vertical"></nz-divider>
+        <a
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure you want to delete this product?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="onDeleteProduct(product)"
+          >Delete</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

@@ -1,0 +1,34 @@
+<nz-table
+  #productTable
+  [nzData]="products"
+  [nzLoading]="isLoading"
+  [nzFrontPagination]="false"
+  [nzShowPagination]="false"
+>
+  <thead>
+    <tr>
+      <th>S.N.</th>
+      <th>ASIN</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let product of productTable.data">
+      <td>{{ product.id }}</td>
+      <td>{{ product.asin }}</td>
+      <td>{{ product.name }}</td>
+      <td>{{ product.price }}</td>
+      <td>
+        <a
+          nz-popconfirm
+          nzPopconfirmTitle="Are you sure you want to order this product?"
+          nzPopconfirmPlacement="bottom"
+          (nzOnConfirm)="confirm(product)"
+          >Order Now</a
+        >
+      </td>
+    </tr>
+  </tbody>
+</nz-table>
